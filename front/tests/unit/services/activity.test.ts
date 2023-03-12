@@ -1,27 +1,27 @@
+import { getActivities, saveActivity } from '../../../src/services/activity'
 import { Axios } from '../../../src/services/Axios'
-import { getMeals, saveMeal } from '../../../src/services/meal'
 
 jest.mock('../../../src/services/Axios')
 
-describe('getMeals', () => {
+describe('getActivities', () => {
   beforeEach(() => {
-    jest.spyOn(Axios, 'get').mockResolvedValue({ data: 'meals' })
+    jest.spyOn(Axios, 'get').mockResolvedValue({ data: 'activities' })
   })
 
-  it('should get meals', async () => {
-    await getMeals()
-    expect(Axios.get).toHaveBeenCalledWith('/api/meals')
+  it('should get activities', async () => {
+    await getActivities()
+    expect(Axios.get).toHaveBeenCalledWith('/api/activities')
   })
 
-  it('should return meals', async () => {
-    const result = await getMeals()
-    expect(result).toBe('meals')
+  it('should return activities', async () => {
+    const result = await getActivities()
+    expect(result).toBe('activities')
   })
 })
 
-describe('saveMeal', () => {
-  it('should save meal', async () => {
-    await saveMeal({ id: 0, name: 'name' })
-    expect(Axios.post).toHaveBeenCalledWith('/api/meals', { id: 0, name: 'name' })
+describe('saveActivity', () => {
+  it('should save activity', async () => {
+    await saveActivity({ id: 0, name: 'name', kcal: 50 })
+    expect(Axios.post).toHaveBeenCalledWith('/api/activities', { id: 0, name: 'name', kcal: 50 })
   })
 })
