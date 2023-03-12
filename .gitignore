@@ -1,0 +1,8 @@
+.vscode
+yarn-error.log
+node_modules
+dist
+.env
+sessions
+coverage
+old
