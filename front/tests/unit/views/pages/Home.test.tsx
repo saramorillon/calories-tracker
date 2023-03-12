@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react'
+import { fireEvent, render, screen, within } from '@testing-library/react'
 import React from 'react'
 import { getActivities } from '../../../../src/services/activity'
 import { getMeals } from '../../../../src/services/meal'
@@ -30,6 +30,12 @@ describe('Home', () => {
     expect(screen.getByText('🍲 Déjeuner')).toBeInTheDocument()
   })
 
+  it('should render total meals kcal', async () => {
+    render(<Home />)
+    await wait()
+    expect(within(screen.getByText('🍔 Repas')).getByText('⚡50 kcal')).toBeInTheDocument()
+  })
+
   it('should open meal page when clicking on meal button', async () => {
     const navigate = mockNavigate()
     render(<Home />)
@@ -50,6 +56,12 @@ describe('Home', () => {
     expect(screen.getByText('Sport')).toBeInTheDocument()
   })
 
+  it('should render total activities kcal', async () => {
+    render(<Home />)
+    await wait()
+    expect(within(screen.getByText('🏃 Activités')).getByText('⚡50 kcal')).toBeInTheDocument()
+  })
+
   it('should open activity page when clicking on activity button', async () => {
     const navigate = mockNavigate()
     render(<Home />)
@@ -68,6 +80,12 @@ describe('Home', () => {
     render(<Home />)
     await wait()
     expect(screen.getByLabelText('250 mL')).toBeInTheDocument()
+  })
+
+  it('should render total water', async () => {
+    render(<Home />)
+    await wait()
+    expect(screen.getByText('0,25 L')).toBeInTheDocument()
   })
 
   it('should save water and refresh when click on water button', async () => {
