@@ -1,4 +1,5 @@
 import { Router } from 'express'
+import { getActivities, postActivity } from './controllers/activities'
 import { getApp } from './controllers/app'
 import { getMeals, postMeal } from './controllers/meals'
 import { getSession, login, logout } from './controllers/session'
@@ -17,6 +18,9 @@ export function routes() {
 
   router.get('/meals', getMeals)
   router.post('/meals', postMeal)
+
+  router.get('/activities', getActivities)
+  router.post('/activities', postActivity)
 
   return router
 }

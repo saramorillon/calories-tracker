@@ -22,3 +22,10 @@ model Meal {
   name String @db.VarChar(40)
   date String @db.Char(10)
 }
+
+model Activity {
+  id   Int    @id @default(autoincrement())
+  name String @db.VarChar(40)
+  date String @db.Char(10)
+  kcal Int
+}
