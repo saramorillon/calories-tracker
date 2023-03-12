@@ -1,6 +1,7 @@
 import { act } from 'react-dom/test-utils'
 import { useNavigate } from 'react-router-dom'
 import { IApp } from '../src/models/App'
+import { IMeal } from '../src/models/Meal'
 import { ISession } from '../src/models/Session'
 
 export async function wait() {
@@ -42,5 +43,13 @@ export function mockApp(app: Partial<IApp> = {}): IApp {
       url: 'repository url',
     },
     ...app,
+  }
+}
+
+export function mockMeal(meal: Partial<IMeal> = {}): IMeal {
+  return {
+    id: 1,
+    name: 'lunch',
+    ...meal,
   }
 }

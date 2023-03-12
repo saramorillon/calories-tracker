@@ -4,6 +4,7 @@ import { SessionProvider } from '../contexts/SessionContext'
 import { PrivateOutlet, PublicOutlet } from './components/Outlet'
 import { Home } from './pages/Home'
 import { Login } from './pages/Login'
+import { Meal } from './pages/Meal'
 
 export function App(): JSX.Element | null {
   return (
@@ -16,6 +17,7 @@ export function App(): JSX.Element | null {
 
           <Route element={<PrivateOutlet />}>
             <Route path="/" element={<Home />} />
+            <Route path="/meal" element={<Meal />} />
           </Route>
 
           <Route path="*" element={<Navigate to="/" />} />

@@ -32,6 +32,7 @@
     "@saramorillon/hooks": "^2.7.0",
     "@tabler/icons": "^1.108.0",
     "axios": "^1.1.3",
+    "dayjs": "^1.11.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.2"

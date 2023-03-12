@@ -4,7 +4,7 @@ import { login } from '../../../../src/services/session'
 import { Login } from '../../../../src/views/pages/Login'
 import { mockLocation, restoreLocation, wait } from '../../../mocks'
 
-jest.mock('../../../../src/services/session.ts')
+jest.mock('../../../../src/services/session')
 
 describe('Login', () => {
   beforeEach(() => {

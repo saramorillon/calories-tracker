@@ -16,3 +16,9 @@ model User {
 
   @@map("user")
 }
+
+model Meal {
+  id   Int    @id @default(autoincrement())
+  name String @db.VarChar(40)
+  date String @db.Char(10)
+}

@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import { getApp } from '../../src/controllers/app'
+import { getMeals, postMeal } from '../../src/controllers/meals'
 import { getSession, login, logout } from '../../src/controllers/session'
 import { session } from '../../src/middlewares/session'
 import { routes } from '../../src/routes'
@@ -29,6 +30,8 @@ describe('routes', () => {
     expect(router.use).toHaveBeenCalledWith(session)
     expect(router.get).toHaveBeenCalledWith('/session', getSession)
     expect(router.get).toHaveBeenCalledWith('/logout', logout)
+    expect(router.get).toHaveBeenCalledWith('/meals', getMeals)
+    expect(router.post).toHaveBeenCalledWith('/meals', postMeal)
   })
 
   it('should return router', () => {
