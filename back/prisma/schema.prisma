@@ -29,3 +29,9 @@ model Activity {
   date String @db.Char(10)
   kcal Int
 }
+
+model Water {
+  id   Int    @id @default(autoincrement())
+  date String @db.Char(10)
+  ml   Int
+}

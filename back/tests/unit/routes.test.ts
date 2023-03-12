@@ -3,6 +3,7 @@ import { getActivities, postActivity } from '../../src/controllers/activities'
 import { getApp } from '../../src/controllers/app'
 import { getMeals, postMeal } from '../../src/controllers/meals'
 import { getSession, login, logout } from '../../src/controllers/session'
+import { getWaters, postWater } from '../../src/controllers/waters'
 import { session } from '../../src/middlewares/session'
 import { routes } from '../../src/routes'
 
@@ -35,6 +36,8 @@ describe('routes', () => {
     expect(router.post).toHaveBeenCalledWith('/meals', postMeal)
     expect(router.get).toHaveBeenCalledWith('/activities', getActivities)
     expect(router.post).toHaveBeenCalledWith('/activities', postActivity)
+    expect(router.get).toHaveBeenCalledWith('/waters', getWaters)
+    expect(router.post).toHaveBeenCalledWith('/waters', postWater)
   })
 
   it('should return router', () => {

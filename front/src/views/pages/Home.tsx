@@ -1,16 +1,22 @@
 import { useFetch } from '@saramorillon/hooks'
-import { IconPlus } from '@tabler/icons'
-import React from 'react'
+import { IconGlass, IconGlassFull, IconPlus } from '@tabler/icons'
+import React, { useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { mealTypes } from '../../models/Meal'
 import { getActivities } from '../../services/activity'
 import { getMeals } from '../../services/meal'
+import { getWaters, saveWater } from '../../services/water'
 
 export function Home(): JSX.Element {
   const navigate = useNavigate()
 
   const [meals] = useFetch(getMeals, [])
   const [activities] = useFetch(getActivities, [])
+  const [waters, , refresh] = useFetch(getWaters, [])
+
+  const addWater = useCallback(() => {
+    void saveWater().then(refresh)
+  }, [refresh])
 
   return (
     <>
@@ -32,6 +38,21 @@ export function Home(): JSX.Element {
       ))}
       <button data-variant="outlined" style={{ width: '100%' }} onClick={() => navigate('/activity')}>
         <IconPlus /> Ajouter une activité
+      </button>
+
+      <h2>
+        💧 Eau
+        <small className="right">
+          {waters.reduce((acc, curr) => acc + curr.ml / 1000, 0).toLocaleString('fr-FR')} L
+        </small>
+      </h2>
+      {waters.map((water) => (
+        <mark key={water.id} className="mr1 p1" aria-label={`${water.ml} mL`}>
+          <IconGlassFull />
+        </mark>
+      ))}
+      <button data-variant="outlined" onClick={addWater} aria-label="Ajouter de l'eau">
+        <IconGlass />
       </button>
     </>
   )
